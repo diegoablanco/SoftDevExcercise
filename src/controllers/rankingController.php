@@ -1,3 +1,9 @@
 <?php
-echo('ranking controller');
+class rankingController
+{
+    function index()
+    {
+        echo('ranking controller');
+    }
+}
 ?>
