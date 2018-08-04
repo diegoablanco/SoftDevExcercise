@@ -1,4 +1,6 @@
 {
     "name": "diegoblanco/softdevexcercise",
-    "require": {}
+    "require": {
+        "klein/klein": "^2.1"
+    }
 }
