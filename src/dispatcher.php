@@ -1,5 +1,4 @@
 <?php
-require('request.php');
 require('router.php');
 
 class Dispatcher
@@ -8,21 +7,20 @@ class Dispatcher
 
     public function dispatch()
     {
-        $this->request = new Request();
-        Router::parse($this->request->url, $this->request);
+        $router = new Router();
+        $match = $router->match();
 
-        $controller = $this->loadController();
+        $controller = $this->loadController($match['controller']);
 
-        call_user_func_array([$controller, $this->request->action], $this->request->params);
+        call_user_func_array([$controller, $match['action']], $match['params']);
     }
 
-    public function loadController()
+    public function loadController($controller)
     {
-        $controller = $this->request->controller;
-        $file = 'controllers/' . $controller . '.php';
+        $controllerName = $controller . 'Controller';
+        $file = 'controllers/' . $controllerName . '.php';
         require($file);
-        $controller = new $controller();
-        return $controller;
+        return new $controllerName();
     }
 
 }

@@ -1,9 +1,9 @@
 <?php
 class rankingController
 {
-    function index()
+    function get()
     {
-        echo('ranking controller');
+        echo json_encode(['ranking controller']);
     }
 }
 ?>
