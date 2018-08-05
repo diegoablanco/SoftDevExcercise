@@ -1,12 +1,13 @@
 <?php
+require 'baseController.php';
 require '../src/models/books.php';
-class homeController
+class homeController extends BaseController
 {
     function index()
     {
         $books = new BooksModel();
-        $books->findAll();
-        echo('home controller');
+        $this->model = $books->findAll();
+        $this->render('index');
     }
     function notFound()
     {
