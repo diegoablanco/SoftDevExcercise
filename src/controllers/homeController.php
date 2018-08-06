@@ -3,6 +3,17 @@ require 'baseController.php';
 require '../src/models/books.php';
 class homeController extends BaseController
 {
+    private function getFormValues(){
+        return [
+            'search' => isset($_POST['search']) ? $_POST['search'] : ''
+        ];
+    }
+    
+    public function __construct()
+    {
+        $this->form = $this->getFormValues();
+    }
+
     function index()
     {
         $books = new BooksModel();
@@ -12,12 +23,13 @@ class homeController extends BaseController
     function filter()
     {
         $books = new BooksModel();
-        $this->model = $books->findByTitle($_POST['search']);
+        $this->model = $books->findByTitle($this->form['search']);
         $this->render('index');
     }
     function notFound()
     {
-        echo('Not found');
+        http_response_code(404);
+        echo('Page not found');
     }
 }
 ?>

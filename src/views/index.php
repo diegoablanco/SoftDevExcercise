@@ -18,7 +18,14 @@
         <form  method="POST">
             <div class="form-group">
                 <label for="searchInput">Find by title</label>
-                <input type="text" name="search" id="searchInput"class="form-control" aria-describedby="enter title" placeholder="Enter title here">
+                <input 
+                    type="text" 
+                    name="search" 
+                    id="searchInput" 
+                    class="form-control" 
+                    aria-describedby="enter title" 
+                    placeholder="Enter title here"
+                    value="<?=$form['search'] ?>">
             </div>
             <button type="submit" class="btn btn-primary">Find</button>
         </form>
