@@ -3,7 +3,7 @@ require 'vendor/autoload.php';
 $db = require('src/database.php');
 $client = new \GuzzleHttp\Client();
 $res = $client->request('GET', 'http://openlibrary.org/search.json', [
-    'query' => ['author' => 'tolkien']
+    'query' => ['author' => 'J. R. R. Tolkien']
 ]);
 $body = json_decode($res->getBody(), true);
 

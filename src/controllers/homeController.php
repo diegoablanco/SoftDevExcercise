@@ -9,6 +9,12 @@ class homeController extends BaseController
         $this->model = $books->findAll();
         $this->render('index');
     }
+    function filter()
+    {
+        $books = new BooksModel();
+        $this->model = $books->findByTitle($_POST['search']);
+        $this->render('index');
+    }
     function notFound()
     {
         echo('Not found');
