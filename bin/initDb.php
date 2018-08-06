@@ -1,6 +1,16 @@
 <?php
 require 'vendor/autoload.php';
+
 $db = require('src/database.php');
+$createTable = "CREATE TABLE `books` ( 
+    `id` int(11) NOT NULL,
+    `author` varchar(1000) NOT NULL,
+    `title` varchar(1000) NOT NULL,
+    `publish_year` varchar(10) NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1";
+
+$db->query($createTable);
+
 $client = new \GuzzleHttp\Client();
 $res = $client->request('GET', 'http://openlibrary.org/search.json', [
     'query' => ['author' => 'J. R. R. Tolkien']
